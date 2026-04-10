@@ -1,6 +1,10 @@
 name: Download Flash Games
 
 on:
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/download-games.yml'
   workflow_dispatch:
     inputs:
       max_size_gb:
@@ -250,8 +254,8 @@ jobs:
 
       - name: Run download script
         env:
-          MAX_SIZE_GB: ${{ github.event.inputs.max_size_gb }}
-          GAMES_PER_CATEGORY: ${{ github.event.inputs.games_per_category }}
+          MAX_SIZE_GB: ${{ github.event.inputs.max_size_gb || '4' }}
+          GAMES_PER_CATEGORY: ${{ github.event.inputs.games_per_category || '10' }}
         run: python download_games.py
 
       - name: Commit and push downloaded games
