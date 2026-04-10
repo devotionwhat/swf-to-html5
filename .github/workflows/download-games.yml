@@ -37,28 +37,26 @@ jobs:
           python-version: '3.11'
       
       - name: Install dependencies
-        run: |
-          pip install requests
-          
-      - name: Download SWF files from Archive.org
+        run: pip install requests
+      
+      - name: Download SWF files
         env:
           MAX_PER_CATEGORY: ${{ github.event.inputs.max_games_per_category || '100' }}
           CATEGORIES: ${{ github.event.inputs.categories || 'all' }}
-        run: |
-          python3 scripts/download_games.py --max-per-category $MAX_PER_CATEGORY --categories "$CATEGORIES"
+        run: python3 scripts/download_games.py --max-per-category $MAX_PER_CATEGORY --categories "$CATEGORIES"
       
       - name: Generate HTML wrappers
-        run: |
-          python3 scripts/generate_html.py
+        run: python3 scripts/generate_html.py
       
-      - name: Check total size
-        id: size
+      - name: Check progress
         run: |
           TOTAL=$(du -sm assets | cut -f1)
-          echo "total_size=$TOTAL" >> $GITHUB_OUTPUT
-          echo "Current size: ${TOTAL} MB (target: 4096 MB)"
-          
-      - name: Commit and push changes
+          COUNT=$(find assets -name "*.swf" | wc -l)
+          echo "📊 Progress: ${COUNT} games, ${TOTAL} MB"
+          echo "Target: 4096 MB (4 GB)"
+          echo "Progress: $(python3 -c "print(f'{$TOTAL/4096*100:.1f}%')")"
+      
+      - name: Commit changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
