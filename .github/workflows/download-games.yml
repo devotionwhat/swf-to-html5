@@ -44,7 +44,7 @@ jobs:
       
       - name: Download SWF files
         env:
-          MAX_PER_CATEGORY: ${{ github.event.inputs.max_games_per_category || '100' }}
+          MAX_PER_CATEGORY: ${{ github.event.inputs.max_games_per_category || '1000' }}
           CATEGORIES: ${{ github.event.inputs.categories || 'all' }}
         run: python3 scripts/download_games.py --max-per-category $MAX_PER_CATEGORY --categories "$CATEGORIES"
       
