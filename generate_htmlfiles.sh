@@ -42,7 +42,7 @@ add_card(){
     else
         TITLE_COLOR="$4"
     fi
-    echo "Adding ${TITLE}: ${URL} : ${IMAGE_URL}"
+    echo "Adding ${NAME}: ${URL} : ${IMAGE_URL}"
 cat <<EOF >> index.html
         <div class="card ${RANDOM}" onclick="location.href='${URL}';">
                 <div class="card_image">
@@ -89,30 +89,41 @@ LAST_IMAGE_USED="images/blue.gif"
 
 CURDIR=`pwd`
 for f in ./assets/*.swf; do
-    SWF_TITLE=`basename -s .swf ${f}`
-    SWF_BASENAME=`basename ${f}`
+    SWF_TITLE=`basename -s .swf "$f"`
+    SWF_BASENAME=`basename "$f"`
+    # URL-safe version of the filename for HTML file naming (replace spaces/parens)
+    SAFE_HTMLNAME=$(echo "$SWF_BASENAME" | sed 's/ /%20/g; s/(/%28/g; s/)/%29/g')
+    HTML_FILE="./assets/${SWF_BASENAME}.html"
     
     echo "Generating file for ${f}..."
     
     # Output Fullscreen SWF page
-cat <<EOF > ${f}.html
+    cat > "$HTML_FILE" <<HTMLEOF
 <html>
+    <head>
+        <style>
+            body { margin: 0; padding: 0; overflow: hidden; background: #000; }
+        </style>
+    </head>
     <body>
-        <embed src="../${f}" width="100%" height="100%"> </embed>
+        <embed src="../assets/${SAFE_HTMLNAME}" width="100%" height="100%"> </embed>
         <script src="../ruffle_web_latest/ruffle.js"></script>
     </body>
 </html>
-EOF
+HTMLEOF
     
     # Add to Main Page
     
-    IMG_PATH=`find assets -name \*${SWF_BASENAME}.jpg -o -name \*${SWF_BASENAME}.png -o -name \*${SWF_BASENAME}.gif`
-    if [[ -f ${IMG_PATH} && ! -z ${IMG_PATH} ]]; then
+    IMG_PATH=$(find assets -name "*${SWF_BASENAME}.jpg" -o -name "*${SWF_BASENAME}.png" -o -name "*${SWF_BASENAME}.gif" 2>/dev/null | head -1)
+    if [[ -f "${IMG_PATH}" && ! -z "${IMG_PATH}" ]]; then
         echo "Image exists. Using ${IMG_PATH}..."
 cat <<EOF >> index.html
-    <div class="card 1" onclick="location.href='./assets/${SWF_BASENAME}.html';">
+    <div class="card 1" onclick="location.href='./assets/${SAFE_HTMLNAME}.html';">
             <div class="card_image">
                 <img src="${IMG_PATH}" />
+                 <div class="card_title title-white">
+                    <p>${SWF_TITLE}</p>
+                </div>
             </div>
     </div>
 EOF
@@ -120,7 +131,7 @@ EOF
         echo "Using random image..."
         getimage
 cat <<EOF >> index.html
-    <div class="card 1" onclick="location.href='./assets/${SWF_BASENAME}.html';">
+    <div class="card 1" onclick="location.href='./assets/${SAFE_HTMLNAME}.html';">
             <div class="card_image">
                 <img src="images/${RANDOM_IMAGE}" />
                  <div class="card_title title-white">
