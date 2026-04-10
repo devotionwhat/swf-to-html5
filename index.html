@@ -572,9 +572,12 @@
             slide = changeSlide + 1;
         }
 
+        // Store references globally so click handlers can access them
+        var owl1, owl2;
+
         $(document).ready(function () {
             // Main slider
-            var owl1 = $('.one');
+            owl1 = $('.one');
             owl1.owlCarousel({
                 nav: false,
                 items: 1,
@@ -584,7 +587,7 @@
             });
 
             // Thumbnail slider
-            var owl2 = $('.two');
+            owl2 = $('.two');
             owl2.owlCarousel({
                 nav: false,
                 margin: 15,
@@ -602,11 +605,14 @@
             // When main slider changes -> sync thumbnail
             owl1.on('changed.owl.carousel', function (event) {
                 var currentIndex = event.item.index;
-                if (currentIndex === null) return;
+                if (currentIndex === null || currentIndex === undefined) return;
 
                 // Update thumbnail active state
-                $('.slider-two .item').removeClass('active');
-                $('.slider-two .item').eq(currentIndex).addClass('active');
+                var thumbItems = document.querySelectorAll('.slider-two .item');
+                thumbItems.forEach(function(el) { el.classList.remove('active'); });
+                if (thumbItems[currentIndex]) {
+                    thumbItems[currentIndex].classList.add('active');
+                }
 
                 // Move thumbnail slider to show the active item
                 var thumbItemsPerView = slide;
@@ -635,16 +641,6 @@
                 owl1.trigger('prev.owl.carousel');
             });
 
-            // Click thumbnail -> go to that slide in main slider
-            // FIX: Must search within the entire .two carousel, not just parent (.owl-item)
-            // because Owl Carousel wraps each .item in a .owl-item div
-            $('.slider-two').on('click', '.item', function () {
-                var index = $('.slider-two .item').index(this);
-                owl1.trigger('to.owl.carousel', [index, 300]);
-                $('.slider-two .item').removeClass('active');
-                $(this).addClass('active');
-            });
-
             // Thumbnail slider nav
             owl2.on('translated.owl.carousel', function () {
                 $(".slider-two .right-t").removeClass("nonr-t");
@@ -666,28 +662,56 @@
             });
         });
 
-        // ===== GAME LAUNCHER — Opens game in full screen page =====
-        // FIX: Owl Carousel intercepts clicks on .item, so we use event delegation
-        // on the document level and stop propagation to prevent Owl from eating it
-        $(document).on('click', '.play-btn', function(e) {
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-            var slideItem = $(this).closest('.item');
-            var gameUrl = slideItem.data('game-url');
-            if (gameUrl) {
-                window.location.href = gameUrl;
-            }
-        });
+        // ===== CLICK HANDLERS — Using capture phase to beat Owl Carousel =====
+        // Owl Carousel stops event propagation, so we must use capture phase listeners
+        // that fire BEFORE Owl gets the event.
 
-        // Also handle clicking the entire main slider item (not just the button)
-        $(document).on('click', '.slider .item', function(e) {
-            // Only if the click wasn't on the play button (already handled above)
-            if ($(e.target).closest('.play-btn').length) return;
-            var gameUrl = $(this).data('game-url');
-            if (gameUrl) {
-                window.location.href = gameUrl;
+        // Thumbnail click -> change main slider
+        document.addEventListener('click', function(e) {
+            // Find if click was on a thumbnail item
+            var thumbItem = e.target.closest ? e.target.closest('.slider-two .item') : null;
+            if (thumbItem) {
+                e.stopPropagation();
+                var allThumbs = document.querySelectorAll('.slider-two .item');
+                var index = Array.prototype.indexOf.call(allThumbs, thumbItem);
+                if (index >= 0 && owl1) {
+                    owl1.trigger('to.owl.carousel', [index, 300]);
+                    allThumbs.forEach(function(el) { el.classList.remove('active'); });
+                    thumbItem.classList.add('active');
+                }
             }
-        });
+        }, true); // capture = true fires BEFORE Owl Carousel
+
+        // Play Now button / main slider item click -> open fullscreen game
+        document.addEventListener('click', function(e) {
+            // Check for Play Now button first
+            var playBtn = e.target.closest ? e.target.closest('.play-btn') : null;
+            if (playBtn) {
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                var slideItem = playBtn.closest('.item');
+                if (slideItem) {
+                    var gameUrl = slideItem.getAttribute('data-game-url');
+                    if (gameUrl) {
+                        window.location.href = gameUrl;
+                    }
+                }
+                return;
+            }
+
+            // Check for click on main slider item (not on nav arrows)
+            var mainItem = e.target.closest ? e.target.closest('.slider .owl-item.active .item') : null;
+            if (mainItem) {
+                // Don't trigger if clicking nav arrows
+                if (e.target.closest('.left') || e.target.closest('.right')) return;
+                var gameUrl = mainItem.getAttribute('data-game-url');
+                if (gameUrl) {
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    window.location.href = gameUrl;
+                }
+            }
+        }, true); // capture = true fires BEFORE Owl Carousel
     </script>
 
 </body>
