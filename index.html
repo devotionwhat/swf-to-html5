@@ -1,113 +1,880 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tesla Games and Apps</title>
-    <link rel="stylesheet" type="text/css" href="css/auroral2.css" />
-    <link rel="stylesheet" href="css/cards.css">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #0a0a1a;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            padding: 25px 20px 10px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #f49324, #ff6b6b, #f49324);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+            text-shadow: none;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9em;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .all {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: inline-block;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        /* ===== GAME DISPLAY AREA ===== */
+        .game-display {
+            width: 100%;
+            height: 500px;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 40px rgba(244, 147, 36, 0.15), 0 0 80px rgba(244, 147, 36, 0.05);
+            border: 1px solid rgba(244, 147, 36, 0.2);
+        }
+
+        .game-display .game-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.2em;
+        }
+
+        .game-display .game-placeholder i {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: rgba(244, 147, 36, 0.3);
+        }
+
+        .game-display .game-placeholder p {
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .game-display .game-title-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 25px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5;
+        }
+
+        .game-display .game-title-bar h2 {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .game-display .game-title-bar .close-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .game-display .game-title-bar .close-btn:hover {
+            background: #f49324;
+            border-color: #f49324;
+        }
+
+        .game-display iframe,
+        .game-display embed,
+        .game-display object {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== MAIN SLIDER (Big Preview) ===== */
+        .slider {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .slider .owl-nav,
+        .slider .owl-dots {
+            display: none !important;
+        }
+
+        .slider:hover .left {
+            visibility: visible;
+            opacity: 1;
+            left: 20px;
+        }
+
+        .slider:hover .right {
+            visibility: visible;
+            opacity: 1;
+            right: 20px;
+        }
+
+        .slider .item {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .slider .item .slide-bg {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
+        }
+
+        .slider .item:hover .slide-bg {
+            transform: scale(1.05);
+        }
+
+        .slider .item .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 40%, transparent 60%);
+            z-index: 1;
+        }
+
+        .slider .item .slide-content {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            right: 40px;
+            z-index: 2;
+        }
+
+        .slider .item .slide-content h2 {
+            font-size: 2em;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .slider .item .slide-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1em;
+            max-width: 500px;
+        }
+
+        .slider .item .slide-content .play-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 12px 28px;
+            background: #f49324;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .slider .item .slide-content .play-btn:hover {
+            background: #e8850f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(244, 147, 36, 0.4);
+        }
+
+        /* Navigation arrows for main slider */
+        .slider .left,
+        .slider .right {
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .slider .left {
+            left: -20px;
+        }
+
+        .slider .left:hover {
+            left: 20px;
+            background: #f49324;
+            border-color: #f49324;
+        }
+
+        .slider .left.nonl {
+            left: -20px;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .slider .right {
+            right: -20px;
+        }
+
+        .slider .right:hover {
+            right: 20px;
+            background: #f49324;
+            border-color: #f49324;
+        }
+
+        .slider .right.nonr {
+            right: -20px;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* ===== THUMBNAIL SLIDER ===== */
+        .slider-two {
+            overflow: hidden;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 50px;
+        }
+
+        .slider-two .owl-nav,
+        .slider-two .owl-dots {
+            display: none !important;
+        }
+
+        .slider-two:hover .left-t {
+            visibility: visible;
+            opacity: 1;
+            left: 5px;
+        }
+
+        .slider-two:hover .right-t {
+            visibility: visible;
+            opacity: 1;
+            right: 5px;
+        }
+
+        .slider-two .item {
+            height: 100px;
+            border: 3px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            background: #111;
+        }
+
+        .slider-two .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 7px;
+            transition: all 0.3s ease;
+        }
+
+        .slider-two .item:hover img {
+            transform: scale(1.1);
+        }
+
+        .slider-two .item:hover {
+            border-color: rgba(244, 147, 36, 0.5);
+        }
+
+        .slider-two .item.active {
+            border-color: #f49324;
+            box-shadow: 0 0 15px rgba(244, 147, 36, 0.4);
+        }
+
+        .slider-two .item .thumb-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 4px 8px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: #fff;
+            font-size: 0.7em;
+            font-weight: 700;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-radius: 0 0 7px 7px;
+        }
+
+        .slider-two .owl-stage {
+            padding: 10px 0;
+        }
+
+        /* Thumbnail navigation arrows */
+        .slider-two .left-t,
+        .slider-two .right-t {
+            cursor: pointer;
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            transform: translateY(-50%);
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+            width: 36px;
+            height: 36px;
+            background: rgba(43, 43, 43, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .slider-two .left-t {
+            left: -40px;
+        }
+
+        .slider-two .left-t:hover {
+            background: #f49324;
+        }
+
+        .slider-two .left-t.nonl-t {
+            left: -40px;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .slider-two .right-t {
+            right: -40px;
+        }
+
+        .slider-two .right-t:hover {
+            background: #f49324;
+        }
+
+        .slider-two .right-t.nonr-t {
+            right: -40px;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* ===== AURORAL BACKGROUND ===== */
+        .auroral-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .auroral-bg .auroral {
+            position: absolute;
+            left: -50%;
+            top: -50%;
+            width: 200%;
+            height: 200%;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .auroral-bg .auroral.active {
+            opacity: 1;
+        }
+
+        .auroral-northern {
+            animation: northern 8s linear infinite alternate;
+            background: linear-gradient(10deg, rgba(10, 40, 30, 0.6) 20%, rgba(15, 50, 60, 0.4) 40%, rgba(10, 10, 26, 0.7) 70%);
+        }
+
+        .auroral-northern.active {
+            opacity: 1;
+        }
+
+        @keyframes northern {
+            0% { transform: translate(5%, -2%); }
+            25% { transform: translate(10%, 7%); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: translate(7%, -2%); }
+            100% { transform: none; }
+        }
+
+        @keyframes aura {
+            0% { transform: rotate(20deg); }
+            20% { transform: translateY(100px) rotate(1deg); }
+            40% { transform: rotate(-15deg); }
+            60% { transform: rotate(-1deg); }
+            80% { transform: translateY(-10px) rotate(16deg); }
+            100% { transform: rotate(1deg); }
+        }
+
+        .auroral-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 1px;
+            border-radius: 50%;
+            background: white;
+            z-index: -1;
+            box-shadow:
+                34vw 12vh 0 1px rgba(255,255,255,0.5), 98vw 7vh 0 2px rgba(255,255,255,0.5),
+                68vw 18vh 0 2px rgba(255,255,255,0.4), 55vw 21vh 0 2px rgba(255,255,255,0.3),
+                31vw 17vh 0 2px rgba(255,255,255,0.4), 30vw 38vh 0 1px rgba(255,255,255,0.3),
+                67vw 16vh 0 2px rgba(255,255,255,0.5), 79vw 22vh 0 2px rgba(255,255,255,0.4),
+                83vw 18vh 0 1px rgba(255,255,255,0.3), 82vw 35vh 0 2px rgba(255,255,255,0.5),
+                24vw 2vh 0 2px rgba(255,255,255,0.4), 43vw 8vh 0 2px rgba(255,255,255,0.5),
+                99vw 45vh 0 2px rgba(255,255,255,0.4), 72vw 27vh 0 1px rgba(255,255,255,0.3),
+                49vw 29vh 0 1px rgba(255,255,255,0.4), 55vw 37vh 0 1px rgba(255,255,255,0.3),
+                92vw 39vh 0 2px rgba(255,255,255,0.5), 93vw 44vh 0 2px rgba(255,255,255,0.4),
+                33vw 14vh 0 2px rgba(255,255,255,0.3), 70vw 20vh 0 2px rgba(255,255,255,0.5),
+                73vw 28vh 0 1px rgba(255,255,255,0.4), 88vw 10vh 0 2px rgba(255,255,255,0.5),
+                16vw 41vh 0 2px rgba(255,255,255,0.4), 53vw 4vh 0 2px rgba(255,255,255,0.5),
+                73vw 19vh 0 2px rgba(255,255,255,0.3), 56vw 19vh 0 2px rgba(255,255,255,0.4),
+                94vw 25vh 0 2px rgba(255,255,255,0.5), 18vw 10vh 0 1px rgba(255,255,255,0.3),
+                79vw 4vh 0 2px rgba(255,255,255,0.4), 43vw 20vh 0 2px rgba(255,255,255,0.5),
+                9vw 14vh 0 2px rgba(255,255,255,0.4), 11vw 7vh 0 2px rgba(255,255,255,0.5),
+                63vw 20vh 0 1px rgba(255,255,255,0.3), 62vw 50vh 0 1px rgba(255,255,255,0.4),
+                97vw 33vh 0 1px rgba(255,255,255,0.5), 74vw 1vh 0 2px rgba(255,255,255,0.4),
+                47vw 20vh 0 2px rgba(255,255,255,0.5), 82vw 28vh 0 1px rgba(255,255,255,0.3),
+                13vw 2vh 0 1px rgba(255,255,255,0.4), 18vw 43vh 0 1px rgba(255,255,255,0.3),
+                12vw 15vh 0 1px rgba(255,255,255,0.5), 8vw 24vh 0 1px rgba(255,255,255,0.4);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media screen and (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .slider .item {
+                height: 280px;
+            }
+            .slider .item .slide-content h2 {
+                font-size: 1.4em;
+            }
+            .slider .item .slide-content {
+                bottom: 25px;
+                left: 25px;
+                right: 25px;
+            }
+            .game-display {
+                height: 350px;
+            }
+            .slider-two .item {
+                height: 70px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .slider .item {
+                height: 220px;
+            }
+            .game-display {
+                height: 280px;
+            }
+            .slider .item .slide-content .play-btn {
+                padding: 8px 18px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="auroral-info">
-        <h1>Tesla Games</h1>
-        <a href="#northern" class="filter-link"> Northern</a>
-        <a href="#northern-intense" class="filter-link"> Northern Intense</a>
-        <a href="#northern-dimmed" class="filter-link"> Northern Dimmed</a>
-        <a href="#northern-dusk" class="filter-link"> Northern Dusk</a>
-        <a href="#northern-warm" class="filter-link"> Northern Warm</a>
-        <a href="#agrabah" class="filter-link"> Agrabah</a>
 
-        <div class="cards-list">
-
-        <div class="card 18554" onclick="location.href='https://www.crazygames.com/game/word-wipe';">
-                <div class="card_image">
-                    <img src="https://images.crazygames.com/games/word-wipe/thumb-1564675416346.png" />
-                    <div class="card_title title-black">
-                        <p>Word Wipe</p>
-                    </div>
-                </div>
-        </div>
-
-        <div class="card 20302" onclick="location.href='https://www.albinoblacksheep.com/games/html5/there-is-no-game/';">
-                <div class="card_image">
-                    <img src="images/landscape.jpg" />
-                    <div class="card_title title-white">
-                        <p>There Is No Game</p>
-                    </div>
-                </div>
-        </div>
-
-        <div class="card 22844" onclick="location.href='https://www.albinoblacksheep.com/games/';">
-                <div class="card_image">
-                    <img src="images/blue.gif" />
-                    <div class="card_title title-white">
-                        <p>HTML5 Games</p>
-                    </div>
-                </div>
-        </div>
-
-    <div class="card 1" onclick="location.href='./assets/PacmanxAdvanced.swf.html';">
-            <div class="card_image">
-                <img src="assets/PacmanxAdvanced.swf.jpg" />
-                 <div class="card_title title-white">
-                    <p>PacmanxAdvanced</p>
-                </div>
-            </div>
-    </div>
-    <div class="card 1" onclick="location.href='./assets/crash_down.swf.html';">
-            <div class="card_image">
-                <img src="assets/crash_down.swf.jpg" />
-                 <div class="card_title title-white">
-                    <p>crash_down</p>
-                </div>
-            </div>
-    </div>
-    <div class="card 1" onclick="location.href='./assets/pacman%20%281%29.swf.html';">
-            <div class="card_image">
-                <img src="assets/pacman (1).swf.jpg" />
-                 <div class="card_title title-white">
-                    <p>pacman (1)</p>
-                </div>
-            </div>
-    </div>
-    <div class="card 1" onclick="location.href='./assets/pacman.swf.html';">
-            <div class="card_image">
-                <img src="assets/pacman.swf.jpg" />
-                 <div class="card_title title-white">
-                    <p>pacman</p>
-                </div>
-            </div>
-    </div>
-    <div class="card 1" onclick="location.href='./assets/pacxon.swf.html';">
-            <div class="card_image">
-                <img src="assets/pacxon.swf.jpg" />
-                 <div class="card_title title-white">
-                    <p>pacxon</p>
-                </div>
-            </div>
-    </div>
-    <div class="card 1" onclick="location.href='./assets/super-mario-flash-2.swf.html';">
-            <div class="card_image">
-                <img src="assets/super-mario-flash-2.swf.jpg" />
-                 <div class="card_title title-white">
-                    <p>super-mario-flash-2</p>
-                </div>
-            </div>
-    </div>
-  </div>
-    </div>
-    <!-- Theme Selector -->
-    <div class="container">
-        <div id="northern" class="auroral auroral-northern"></div>
-        <div id="northern-intense" class="auroral auroral-northern-intense"></div>
-        <div id="northern-dimmed" class="auroral auroral-northern-dimmed"></div>
-        <div id="northern-dusk" class="auroral auroral-northern-dusk"></div>
-        <div id="northern-warm" class="auroral auroral-northern-warm"></div>
-        <div id="agrabah" class="auroral auroral-agrabah"></div>
+    <!-- Aurora Background -->
+    <div class="auroral-bg">
+        <div class="auroral auroral-northern active"></div>
         <div class="auroral-stars"></div>
     </div>
-</body>
 
+    <!-- Header -->
+    <div class="header">
+        <h1>TESLA GAMES</h1>
+        <p>Flash Games powered by Ruffle</p>
+    </div>
+
+    <div class="all">
+
+        <!-- Game Display Area (shows when a game is launched) -->
+        <div class="game-display" id="gameDisplay" style="display: none;">
+            <div class="game-title-bar">
+                <h2 id="gameTitle">Game Title</h2>
+                <button class="close-btn" onclick="closeGame()" title="Close game">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Slider (Big Preview) -->
+        <div class="slider">
+            <div class="owl-carousel owl-theme one">
+
+                <div class="item" data-swf="assets/PacmanxAdvanced.swf" data-name="Pacman Advanced">
+                    <div class="slide-bg" style="background-image: url('assets/PacmanxAdvanced.swf.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Pacman Advanced</h2>
+                        <p>The classic Pac-Man game with advanced features and levels.</p>
+                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                    </div>
+                </div>
+
+                <div class="item" data-swf="assets/crash_down.swf" data-name="Crash Down">
+                    <div class="slide-bg" style="background-image: url('assets/crash_down.swf.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Crash Down</h2>
+                        <p>A fast-paced puzzle game. Match and eliminate blocks before they stack up!</p>
+                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                    </div>
+                </div>
+
+                <div class="item" data-swf="assets/pacman%20%281%29.swf" data-name="Pacman">
+                    <div class="slide-bg" style="background-image: url('assets/pacman%20%281%29.swf.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Pacman</h2>
+                        <p>The original Pac-Man arcade experience in your browser.</p>
+                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                    </div>
+                </div>
+
+                <div class="item" data-swf="assets/pacman.swf" data-name="Pacman Classic">
+                    <div class="slide-bg" style="background-image: url('assets/pacman.swf.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Pacman Classic</h2>
+                        <p>Enjoy the timeless classic Pac-Man right here.</p>
+                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                    </div>
+                </div>
+
+                <div class="item" data-swf="assets/pacxon.swf" data-name="Pacxon">
+                    <div class="slide-bg" style="background-image: url('assets/pacxon.swf.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Pacxon</h2>
+                        <p>A clever mix of Pac-Man and Qix - claim territory while avoiding ghosts!</p>
+                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                    </div>
+                </div>
+
+                <div class="item" data-swf="assets/super-mario-flash-2.swf" data-name="Super Mario Flash 2">
+                    <div class="slide-bg" style="background-image: url('assets/super-mario-flash-2.swf.jpg');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Super Mario Flash 2</h2>
+                        <p>Create and play custom Mario levels in this Flash classic!</p>
+                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Main Slider Nav -->
+            <div class="left nonl"><i class="fa fa-angle-left"></i></div>
+            <div class="right"><i class="fa fa-angle-right"></i></div>
+        </div>
+
+        <!-- Thumbnail Slider -->
+        <div class="slider-two">
+            <div class="owl-carousel owl-theme two">
+
+                <div class="item active">
+                    <img src="assets/PacmanxAdvanced.swf.jpg" alt="Pacman Advanced">
+                    <div class="thumb-label">Pacman Advanced</div>
+                </div>
+
+                <div class="item">
+                    <img src="assets/crash_down.swf.jpg" alt="Crash Down">
+                    <div class="thumb-label">Crash Down</div>
+                </div>
+
+                <div class="item">
+                    <img src="assets/pacman%20%281%29.swf.jpg" alt="Pacman">
+                    <div class="thumb-label">Pacman</div>
+                </div>
+
+                <div class="item">
+                    <img src="assets/pacman.swf.jpg" alt="Pacman Classic">
+                    <div class="thumb-label">Pacman Classic</div>
+                </div>
+
+                <div class="item">
+                    <img src="assets/pacxon.swf.jpg" alt="Pacxon">
+                    <div class="thumb-label">Pacxon</div>
+                </div>
+
+                <div class="item">
+                    <img src="assets/super-mario-flash-2.swf.jpg" alt="Super Mario Flash 2">
+                    <div class="thumb-label">Super Mario Flash 2</div>
+                </div>
+
+            </div>
+
+            <!-- Thumbnail Nav -->
+            <div class="left-t nonl-t"><i class="fa fa-angle-left"></i></div>
+            <div class="right-t"><i class="fa fa-angle-right"></i></div>
+        </div>
+
+    </div>
+
+    <!-- jQuery & Owl Carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- Ruffle Player -->
+    <script src="ruffle_web_latest/ruffle.js"></script>
+
+    <script>
+        var changeSlide = 4; // mobile -1, desktop + 1
+        var slide = changeSlide;
+
+        if ($(window).width() < 600) {
+            slide = changeSlide - 1;
+        } else if ($(window).width() > 999) {
+            slide = changeSlide + 1;
+        }
+
+        $(document).ready(function () {
+            // Main slider (big preview)
+            $('.one').owlCarousel({
+                nav: false,
+                items: 1,
+                autoplay: false,
+                center: true,
+                loop: false,
+                dots: false
+            });
+
+            // Thumbnail slider
+            $('.two').owlCarousel({
+                nav: false,
+                margin: 15,
+                mouseDrag: false,
+                touchDrag: true,
+                loop: false,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: changeSlide - 1,
+                        slideBy: changeSlide - 1
+                    },
+                    600: {
+                        items: changeSlide,
+                        slideBy: changeSlide
+                    },
+                    1000: {
+                        items: changeSlide + 1,
+                        slideBy: changeSlide + 1
+                    }
+                }
+            });
+
+            // Sync main slider with thumbnails
+            var owl = $('.one');
+            owl.owlCarousel();
+            owl.on('translated.owl.carousel', function (event) {
+                $(".right").removeClass("nonr");
+                $(".left").removeClass("nonl");
+
+                if ($('.one .owl-next').is(".disabled")) {
+                    $(".slider .right").addClass("nonr");
+                }
+                if ($('.one .owl-prev').is(".disabled")) {
+                    $(".slider .left").addClass("nonl");
+                }
+
+                // Sync thumbnail active state
+                $('.slider-two .item').removeClass("active");
+                var c = $(".slider .owl-item.active").index();
+                $('.slider-two .item').eq(c).addClass("active");
+
+                // Sync thumbnail slider page
+                var d = Math.ceil((c + 1) / (slide)) - 1;
+                $(".slider-two .owl-dots .owl-dot").eq(d).trigger('click');
+            });
+
+            // Main slider navigation
+            $('.right').click(function () {
+                $(".slider .owl-next").trigger('click');
+            });
+            $('.left').click(function () {
+                $(".slider .owl-prev").trigger('click');
+            });
+
+            // Click thumbnail -> go to that slide
+            $('.slider-two .item').click(function () {
+                var b = $(".slider-two .item").index(this);
+                $(".slider .owl-dots .owl-dot").eq(b).trigger('click');
+                $(".slider-two .item").removeClass("active");
+                $(this).addClass("active");
+            });
+
+            // Thumbnail slider navigation
+            var owl2 = $('.two');
+            owl2.owlCarousel();
+            owl2.on('translated.owl.carousel', function (event) {
+                $(".right-t").removeClass("nonr-t");
+                $(".left-t").removeClass("nonl-t");
+
+                if ($('.two .owl-next').is(".disabled")) {
+                    $(".slider-two .right-t").addClass("nonr-t");
+                }
+                if ($('.two .owl-prev').is(".disabled")) {
+                    $(".slider-two .left-t").addClass("nonl-t");
+                }
+            });
+
+            $('.right-t').click(function () {
+                $(".slider-two .owl-next").trigger('click');
+            });
+            $('.left-t').click(function () {
+                $(".slider-two .owl-prev").trigger('click');
+            });
+        });
+
+        // ===== GAME LAUNCHER =====
+        function launchGame(btn) {
+            var slideItem = $(btn).closest('.item');
+            var swfPath = slideItem.data('swf');
+            var gameName = slideItem.data('name');
+
+            var display = document.getElementById('gameDisplay');
+            var titleEl = document.getElementById('gameTitle');
+
+            // Clear previous content
+            display.innerHTML = '';
+            display.style.display = 'block';
+
+            // Create the Ruffle player container
+            var container = document.createElement('div');
+            container.style.width = '100%';
+            container.style.height = '100%';
+            container.style.position = 'relative';
+            display.appendChild(container);
+
+            // Create Ruffle player
+            try {
+                var ruffle = window.RufflePlayer.newest();
+                var player = ruffle.createPlayer();
+                player.style.width = '100%';
+                player.style.height = '100%';
+                container.appendChild(player);
+                player.load({ url: swfPath });
+            } catch (e) {
+                // Fallback: use embed tag
+                var embed = document.createElement('embed');
+                embed.src = swfPath;
+                embed.width = '100%';
+                embed.height = '100%';
+                container.appendChild(embed);
+            }
+
+            // Add title bar on top
+            var titleBar = document.createElement('div');
+            titleBar.className = 'game-title-bar';
+            titleBar.innerHTML = '<h2>' + gameName + '</h2><button class="close-btn" onclick="closeGame()" title="Close game"><i class="fa fa-times"></i></button>';
+            display.appendChild(titleBar);
+
+            // Scroll to game display
+            display.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeGame() {
+            var display = document.getElementById('gameDisplay');
+            display.innerHTML = '';
+            display.style.display = 'none';
+        }
+    </script>
+
+</body>
 </html>
