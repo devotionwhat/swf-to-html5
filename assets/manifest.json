@@ -1018,7 +1018,7 @@
       "name": "Falling Bush.swf",
       "category": "driving",
       "size": 30579,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Fire Truck 2.swf",
@@ -1108,247 +1108,253 @@
       "name": "Mining Truck.swf",
       "category": "driving",
       "size": 2532576,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Monster Truck China.swf",
       "category": "driving",
       "size": 3479106,
+      "status": "exists"
+    },
+    {
+      "name": "Monster Truck Curfew.swf",
+      "category": "driving",
+      "size": 908588,
       "status": "downloaded"
     },
     {
       "name": "Monster Truck Jam.swf",
       "category": "driving",
       "size": 4625201,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Monster Truck Maniac.swf",
       "category": "driving",
       "size": 3190058,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Monster Truck Revolution.swf",
       "category": "driving",
       "size": 3842399,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Monster Truck Trials.swf",
       "category": "driving",
       "size": 800901,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Monster Truck.swf",
       "category": "driving",
       "size": 707571,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Monster Trucker 3D.swf",
       "category": "driving",
       "size": 8593358,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Monster Trucks 2.swf",
       "category": "driving",
       "size": 5465586,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Monster Trucks Nitro.swf",
       "category": "driving",
       "size": 3482,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Moonlight Monster Truck.swf",
       "category": "driving",
       "size": 2068213,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "NewCarNet Racer.swf",
       "category": "driving",
       "size": 383876,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Parking Kings.swf",
       "category": "driving",
       "size": 1079945,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Parking Zone.swf",
       "category": "driving",
       "size": 76728,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Pencil Racer 3 Drive It.swf",
       "category": "driving",
       "size": 3564223,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Pepsi Balloon Buster.swf",
       "category": "driving",
       "size": 127866,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Pimp My Monster Truck.swf",
       "category": "driving",
       "size": 567612,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Planet Trucker.swf",
       "category": "driving",
       "size": 9517469,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Rage Truck.swf",
       "category": "driving",
       "size": 7305164,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Santa's Delivery Truck.swf",
       "category": "driving",
       "size": 5895739,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Short Bus Rampage.swf",
       "category": "driving",
       "size": 49750,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Snow Truck 2.swf",
       "category": "driving",
       "size": 3193254,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Theft Super Cars.swf",
       "category": "driving",
       "size": 5815272,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Thor Monster Truck (Old Ver.).swf",
       "category": "driving",
       "size": 2590810,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Top Truck.swf",
       "category": "driving",
       "size": 1707002,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Transformers Truck.swf",
       "category": "driving",
       "size": 5356382,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Truck Loader.swf",
       "category": "driving",
       "size": 1756950,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Truck Mania.swf",
       "category": "driving",
       "size": 3779378,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Truck Pull Zone 1.3.swf",
       "category": "driving",
       "size": 334116,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Truckster 2.swf",
       "category": "driving",
       "size": 4967968,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Truckster 3.swf",
       "category": "driving",
       "size": 2443604,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Turbo Truck 2.swf",
       "category": "driving",
       "size": 1577888,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Turbo Truck.swf",
       "category": "driving",
       "size": 1115255,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Violet Parking.swf",
       "category": "driving",
       "size": 2840055,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Xtreme Stunt Truck.swf",
       "category": "driving",
       "size": 4190556,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "[Unknown Car Game].swf",
       "category": "driving",
       "size": 108798,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "[Unknown Car Jigsaw Game].swf",
       "category": "driving",
       "size": 69168,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "[Unknown Car Shmup Game].swf",
       "category": "driving",
       "size": 337122,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "[Unknown Simpsons Driving Game].swf",
       "category": "driving",
       "size": 586184,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "[Unnamed Driving Game].swf",
       "category": "driving",
       "size": 6372,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "[Unnamed Parking Game].swf",
       "category": "driving",
       "size": 52602,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Obama's School Camp.swf",
@@ -1618,7 +1624,7 @@
       "name": "4 Wheel Madness 3.swf",
       "category": "other",
       "size": 2627632,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "4 Wheel Madness.swf",
@@ -1786,7 +1792,7 @@
       "name": "Autobahn.swf",
       "category": "other",
       "size": 85559,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Bad Piggies HD.swf",
@@ -1810,301 +1816,301 @@
       "name": "Bad Piggies Online 2018.swf",
       "category": "other",
       "size": 5806457,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Ball In Troubles.swf",
       "category": "other",
       "size": 573712,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Batman The Movie Rock 'Em Sock 'Em.swf",
       "category": "other",
       "size": 4410871,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Bean Me!.swf",
       "category": "other",
       "size": 612443,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Beetle Buggin'.swf",
       "category": "other",
       "size": 1082208,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Ben 10 Drift.swf",
       "category": "other",
       "size": 5035039,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Ben 10 Urban Jeep.swf",
       "category": "other",
       "size": 1141585,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Berzerk.swf",
       "category": "other",
       "size": 115307,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Big Rider 3D.swf",
       "category": "other",
       "size": 3721093,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Big Rig Sky Climber.swf",
       "category": "other",
       "size": 294157,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Blob Kombat.swf",
       "category": "other",
       "size": 44054,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Blue Flappy Bird.swf",
       "category": "other",
       "size": 565007,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Booty Rider.swf",
       "category": "other",
       "size": 6337384,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Border Services.swf",
       "category": "other",
       "size": 5328328,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Bouncy Bob.swf",
       "category": "other",
       "size": 1378423,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Bow Chief 2.swf",
       "category": "other",
       "size": 1740389,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Bow Chief.swf",
       "category": "other",
       "size": 342937,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Bowja From His Cashle.swf",
       "category": "other",
       "size": 2629605,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Bricks Breaking.swf",
       "category": "other",
       "size": 210512,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Bubble Bobble 2.swf",
       "category": "other",
       "size": 346053,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Bubble Bobble The Revival.swf",
       "category": "other",
       "size": 1024675,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Bubble Trouble.swf",
       "category": "other",
       "size": 638257,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Buddy The Bulldog.swf",
       "category": "other",
       "size": 1432505,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Buggy Run 2.swf",
       "category": "other",
       "size": 2628744,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Buggy Run 3.swf",
       "category": "other",
       "size": 6687023,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Buggy Run.swf",
       "category": "other",
       "size": 3699895,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Bulldozer Mania.swf",
       "category": "other",
       "size": 3091644,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Burger Time.swf",
       "category": "other",
       "size": 685709,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Canadair (Alt).swf",
       "category": "other",
       "size": 170981,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Canadair (English).swf",
       "category": "other",
       "size": 203683,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Canadair.swf",
       "category": "other",
       "size": 191030,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Cat Mario.swf",
       "category": "other",
       "size": 3664377,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Cave Heroes.swf",
       "category": "other",
       "size": 577124,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Chase 2000.swf",
       "category": "other",
       "size": 329319,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Chimpcomix's Sonic Invaders.swf",
       "category": "other",
       "size": 614962,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Clean Up.swf",
       "category": "other",
       "size": 464094,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Coca-Cola Lawnmower.swf",
       "category": "other",
       "size": 216245,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Cone Crazy.swf",
       "category": "other",
       "size": 304599,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Contra 20th Anniversary.swf",
       "category": "other",
       "size": 1559757,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Coop Catch.swf",
       "category": "other",
       "size": 111057,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Cotse Spy Hunter.swf",
       "category": "other",
       "size": 170318,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Crash Dummies Dummy Dash.swf",
       "category": "other",
       "size": 453274,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Crash Dummies Rev 'N Smash.swf",
       "category": "other",
       "size": 330924,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Crazy Ambulance.swf",
       "category": "other",
       "size": 377308,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Crazy Ball.swf",
       "category": "other",
       "size": 314062,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Crazy Block-Breaker.swf",
       "category": "other",
       "size": 94091,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Crazy Digger 2.swf",
       "category": "other",
       "size": 864790,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Crazy Fishing.swf",
       "category": "other",
       "size": 345846,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Crazy Frog.swf",
       "category": "other",
       "size": 1597301,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Crazy Keepups.swf",
       "category": "other",
       "size": 776963,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Crazy Box Sokoban Remake.swf",
@@ -2320,7 +2326,7 @@
       "name": "LEGO Racers Crossdown Craze.swf",
       "category": "racing",
       "size": 3792484,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Max Dirt Bike 2.swf",
@@ -2392,7 +2398,7 @@
       "name": "Mountain Bike.swf",
       "category": "racing",
       "size": 8514046,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Need For Speed Underground.swf",
@@ -2452,97 +2458,97 @@
       "name": "Speed Racer.swf",
       "category": "racing",
       "size": 1107250,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Speed Rider.swf",
       "category": "racing",
       "size": 1262753,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Speed.swf",
       "category": "racing",
       "size": 239281,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "SpeedRunner.swf",
       "category": "racing",
       "size": 11708359,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Squigly Fish Racer!.swf",
       "category": "racing",
       "size": 476291,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Stunt Dirt Bike 2.swf",
       "category": "racing",
       "size": 6403960,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Super Bike X.swf",
       "category": "racing",
       "size": 6503962,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Super Mario Moto.swf",
       "category": "racing",
       "size": 1834037,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Super Racer.swf",
       "category": "racing",
       "size": 1442164,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Super Sonic Motobike.swf",
       "category": "racing",
       "size": 2007050,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "The Simpsons Family Race.swf",
       "category": "racing",
       "size": 4334089,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Ultimate Formula Racing.swf",
       "category": "racing",
       "size": 2864876,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Ultimate X Motor.swf",
       "category": "racing",
       "size": 2206282,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Xenon Prime Racing.swf",
       "category": "racing",
       "size": 2666649,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "[Unnamed Bike Game].swf",
       "category": "racing",
       "size": 8674594,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "[Unnamed Peter Griffin Bike Game].swf",
       "category": "racing",
       "size": 535441,
-      "status": "downloaded"
+      "status": "exists"
     },
     {
       "name": "Batman's Gotham Dark Knight Total Blackout !.swf",
@@ -2755,7 +2761,7 @@
       "status": "exists"
     }
   ],
-  "total_size": 960841412,
+  "total_size": 961750000,
   "categories": {
     "action": {
       "count": 47,
@@ -2786,8 +2792,8 @@
       "size": 2030516
     },
     "driving": {
-      "count": 91,
-      "size": 213035215
+      "count": 92,
+      "size": 213943803
     },
     "education": {
       "count": 1,
