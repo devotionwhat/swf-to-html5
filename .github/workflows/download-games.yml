@@ -1,274 +1,54 @@
 name: Download Flash Games
 
 on:
-  push:
-    branches: [ master ]
-    paths:
-      - '.github/workflows/download-games.yml'
   workflow_dispatch:
     inputs:
-      max_size_gb:
-        description: 'Maximum total size in GB'
-        required: true
-        default: '4'
-      games_per_category:
-        description: 'Games per category'
-        required: true
-        default: '10'
+      max_games_per_category:
+        description: 'Maximum games to download per category'
+        required: false
+        default: '20'
+      categories:
+        description: 'Categories to download (comma-separated, or "all")'
+        required: false
+        default: 'all'
+
+permissions:
+  contents: write
 
 jobs:
   download-games:
     runs-on: ubuntu-latest
-    timeout-minutes: 360  # 6 hours max
-
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-
+          fetch-depth: 1
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
+      
       - name: Install dependencies
-        run: pip install requests
-
-      - name: Configure Git
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Create download script
-        run: |
-          cat > download_games.py << 'SCRIPT'
-          #!/usr/bin/env python3
-          """
-          Flash Museum Game Scraper for GitHub Actions
-          Downloads top games by category directly to repo
-          """
-
-          import os
-          import re
-          import json
-          import time
-          import math
-          import requests
-          from pathlib import Path
-          from datetime import datetime
-
-          # Configuration
-          OUTPUT_DIR = Path("swf_games")
-          SIZE_LIMIT = float(os.environ.get('MAX_SIZE_GB', '4')) * 1024 * 1024 * 1024
-          GAMES_PER_CATEGORY = int(os.environ.get('GAMES_PER_CATEGORY', '10'))
-
-          HEADERS = {
-              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-              "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-          }
-
-          session = requests.Session()
-          session.headers.update(HEADERS)
-          total_size = 0
-          downloaded_games = []
-
-          def get_page(url):
-              try:
-                  time.sleep(0.3)
-                  r = session.get(url, timeout=30)
-                  r.raise_for_status()
-                  return r.text
-              except Exception as e:
-                  print(f"Error fetching {url}: {e}")
-                  return ""
-
-          def extract_categories(html):
-              pattern = r'class="button-term"[^>]*href="https://flashmuseum\.org/browse/tags/([^/]+)/[^"]*"[^>]*>\s*([^<]+)\s*\((\d+)\)'
-              matches = re.findall(pattern, html)
-              categories = []
-              for slug, name, count in matches:
-                  categories.append({
-                      'slug': slug,
-                      'name': name.strip(),
-                      'count': int(count),
-                      'url': f"https://flashmuseum.org/browse/tags/{slug}/"
-                  })
-              categories.sort(key=lambda x: x['count'], reverse=True)
-              return categories
-
-          def get_game_urls(category_url, max_games=20):
-              html = get_page(category_url)
-              all_links = re.findall(r'href="(https://flashmuseum\.org/([a-z0-9-]+)/)"', html)
-              exclude = ['browse', 'tag', 'feed', 'page', 'comments', 'wp-', 'random', 'library']
-              games = []
-              for url, slug in all_links:
-                  if not any(ex in url for ex in exclude) and len(slug) > 3:
-                      if '/browse/' not in url:
-                          games.append(url)
-              seen = set()
-              unique = []
-              for url in games:
-                  if url not in seen:
-                      seen.add(url)
-                      unique.append(url)
-              return unique[:max_games]
-
-          def extract_game_info(html, game_url, category):
-              title_match = re.search(r'<title>([^|]+)\s*\|', html)
-              name = title_match.group(1).strip() if title_match else "Unknown"
-
-              swf_url = None
-              launch_match = re.search(r"'launchCommand'\s*:\s*'([^']+\.swf[^']*)'", html)
-              if launch_match:
-                  swf_url = launch_match.group(1)
-
-              if not swf_url:
-                  file_match = re.search(r"'fileName'\s*:\s*'([^']+\.swf)'", html)
-                  root_match = re.search(r"'rootURL'\s*:\s*'([^']+)'", html)
-                  if file_match and root_match:
-                      swf_url = f"{root_match.group(1)}/games/{file_match.group(1)}"
-
-              if not swf_url:
-                  swf_match = re.search(r'(https?://[^"\']+\.swf[^"\']*)', html)
-                  if swf_match:
-                      swf_url = swf_match.group(1)
-
-              rating_match = re.search(r'"ratingValue"\s*:\s*([\d.]+)', html)
-              count_match = re.search(r'"ratingCount"\s*:\s*(\d+)', html)
-              rating = float(rating_match.group(1)) if rating_match else 0
-              rating_count = int(count_match.group(1)) if count_match else 0
-              popularity = rating * math.log10(rating_count + 1) if rating > 0 else 0
-
-              return {
-                  'name': name, 'url': game_url, 'swf_url': swf_url,
-                  'category': category, 'rating': rating,
-                  'rating_count': rating_count, 'popularity': popularity
-              }
-
-          def download_file(url, output_path, name):
-              global total_size
-              try:
-                  try:
-                      head = session.head(url, timeout=15, allow_redirects=True)
-                      size = int(head.headers.get('Content-Length', 0))
-                  except:
-                      size = 0
-
-                  if total_size + size > SIZE_LIMIT:
-                      print(f"  [SKIP] {name} - would exceed limit")
-                      return 0
-
-                  r = session.get(url, timeout=180, stream=True)
-                  r.raise_for_status()
-                  size = int(r.headers.get('Content-Length', 0))
-                  total_size += size
-                  output_path.parent.mkdir(parents=True, exist_ok=True)
-
-                  with open(output_path, 'wb') as f:
-                      for chunk in r.iter_content(chunk_size=8192):
-                          f.write(chunk)
-
-                  print(f"  ✓ {name}: {size/1024/1024:.1f}MB (Total: {total_size/1024**3:.2f}GB)")
-                  return size
-              except Exception as e:
-                  print(f"  ✗ {name}: {e}")
-                  return 0
-
-          def main():
-              global total_size, downloaded_games
-              print("=" * 70)
-              print(f"Flash Museum Scraper - Started: {datetime.now().isoformat()}")
-              print(f"Target: {SIZE_LIMIT/1024**3:.1f}GB | Games per category: {GAMES_PER_CATEGORY}")
-              print("=" * 70)
-
-              OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-              html = get_page("https://flashmuseum.org/browse/tags/")
-              if not html:
-                  print("Failed to fetch categories!")
-                  return
-
-              categories = extract_categories(html)
-              print(f"Found {len(categories)} categories")
-
-              for cat in categories[:20]:
-                  if total_size >= SIZE_LIMIT:
-                      print("\n[SIZE LIMIT REACHED]")
-                      break
-
-                  print(f"\n[{cat['name']}] ({cat['count']} games)")
-                  game_urls = get_game_urls(cat['url'], max_games=GAMES_PER_CATEGORY * 2)
-                  games_info = []
-
-                  for url in game_urls:
-                      if total_size >= SIZE_LIMIT:
-                          break
-                      game_html = get_page(url)
-                      if game_html:
-                          info = extract_game_info(game_html, url, cat['slug'])
-                          if info['swf_url']:
-                              games_info.append(info)
-
-                  games_info.sort(key=lambda x: x['popularity'], reverse=True)
-                  downloaded = 0
-
-                  for game in games_info:
-                      if total_size >= SIZE_LIMIT:
-                          break
-                      if downloaded >= GAMES_PER_CATEGORY:
-                          break
-
-                      safe_name = re.sub(r'[^\w\s-]', '', game['name'])[:80].strip().replace(' ', '_')
-                      if not safe_name:
-                          safe_name = game['url'].split('/')[-2][:80]
-                      output_path = OUTPUT_DIR / cat['slug'] / f"{safe_name}.swf"
-
-                      if output_path.exists():
-                          size = output_path.stat().st_size
-                          total_size += size
-                          print(f"  [EXISTS] {game['name']}: {size/1024/1024:.1f}MB")
-                          downloaded += 1
-                          continue
-
-                      size = download_file(game['swf_url'], output_path, game['name'])
-                      if size > 0:
-                          game['file_size'] = size
-                          game['local_path'] = str(output_path)
-                          downloaded_games.append(game)
-                          downloaded += 1
-
-              with open('games_metadata.json', 'w') as f:
-                  json.dump({
-                      'total_games': len(downloaded_games),
-                      'total_size_bytes': total_size,
-                      'total_size_gb': round(total_size / (1024**3), 2),
-                      'downloaded_at': datetime.now().isoformat(),
-                      'games': downloaded_games
-                  }, f, indent=2)
-
-              print("\n" + "=" * 70)
-              print(f"COMPLETE: {len(downloaded_games)} games, {total_size/1024**3:.2f}GB")
-              print("=" * 70)
-
-          if __name__ == "__main__":
-              main()
-          SCRIPT
-
-      - name: Run download script
+          pip install requests
+          
+      - name: Download SWF files from Archive.org
         env:
-          MAX_SIZE_GB: ${{ github.event.inputs.max_size_gb || '4' }}
-          GAMES_PER_CATEGORY: ${{ github.event.inputs.games_per_category || '10' }}
-        run: python download_games.py
-
-      - name: Commit and push downloaded games
+          MAX_PER_CATEGORY: ${{ github.event.inputs.max_games_per_category || '20' }}
+          CATEGORIES: ${{ github.event.inputs.categories || 'all' }}
         run: |
+          python3 scripts/download_games.py --max-per-category $MAX_PER_CATEGORY --categories "$CATEGORIES"
+      
+      - name: Generate HTML wrappers
+        run: |
+          python3 scripts/generate_html.py
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add -A
-          git diff --staged --quiet || git commit -m "Add flash games ($(date '+%Y-%m-%d %H:%M'))"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Add flash games and generate HTML wrappers [skip ci]"
           git push
-
-      - name: Upload metadata artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: games-metadata
-          path: games_metadata.json
