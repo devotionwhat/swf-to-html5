@@ -38,16 +38,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install requests pillow
-      
-      # Download Ruffle for thumbnail generation
-      - name: Download Ruffle exporter
-        run: |
-          mkdir -p ~/ruffle
-          cd ~/ruffle
-          wget -q https://github.com/ruffle-rs/ruffle/releases/download/nightly-2024-01-15/ruffle-exporter-linux-x86_64.tar.gz
-          tar -xzf ruffle-exporter-linux-x86_64.tar.gz
-          chmod +x exporter
+          pip install requests
           
       - name: Download SWF files from Archive.org
         env:
@@ -55,17 +46,6 @@ jobs:
           CATEGORIES: ${{ github.event.inputs.categories || 'all' }}
         run: |
           python3 scripts/download_games.py --max-per-category $MAX_PER_CATEGORY --categories "$CATEGORIES"
-      
-      - name: Generate thumbnails
-        run: |
-          echo "Generating thumbnails with Ruffle exporter..."
-          for swf in $(find assets -name "*.swf" -type f); do
-            png="${swf}.png"
-            if [ ! -f "$png" ]; then
-              echo "  Thumbnail: $swf"
-              timeout 10s ~/ruffle/exporter "$swf" "$png" --frame 100 2>/dev/null || echo "    (skipped)"
-            fi
-          done
       
       - name: Generate HTML wrappers
         run: |
@@ -76,12 +56,12 @@ jobs:
         run: |
           TOTAL=$(du -sm assets | cut -f1)
           echo "total_size=$TOTAL" >> $GITHUB_OUTPUT
-          echo "Current size: ${TOTAL} MB"
+          echo "Current size: ${TOTAL} MB (target: 4096 MB)"
           
       - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add -A
-          git diff --quiet && git diff --staged --quiet || git commit -m "Add flash games and thumbnails [skip ci]"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Add flash games [skip ci]"
           git push
