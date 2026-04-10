@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Roller Rider</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#1a1a2e}
+#game-container{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center}
+#game-container embed,#game-container object,#game-container canvas{max-width:100%;max-height:100%;display:block}
+.back{position:fixed;top:15px;left:15px;background:rgba(255,255,255,0.2);color:white;
+text-decoration:none;padding:10px 20px;border-radius:25px;z-index:1000;backdrop-filter:blur(10px)}
+.back:hover{background:rgba(255,255,255,0.3)}
+.fullscreen{position:fixed;top:15px;right:15px;background:rgba(255,255,255,0.2);color:white;
+border:none;padding:10px 20px;border-radius:25px;z-index:1000;cursor:pointer;backdrop-filter:blur(10px)}
+.fullscreen:hover{background:rgba(255,255,255,0.3)}
+</style></head>
+<body>
+<a href="../other.html" class="back">← Back to Other Games</a>
+<button class="fullscreen" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+<div id="game-container"><embed src="Roller Rider.swf" type="application/x-shockwave-flash"></div>
+<script src="https://cdn.jsdelivr.net/npm/ruffle-mirror@latest/ruffle.js"></script>
+<script>
+function toggleFullscreen() {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+}
+</script>
+</body></html>
