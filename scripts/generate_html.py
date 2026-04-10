@@ -19,7 +19,7 @@ from pathlib import Path
 ASSETS_DIR = "assets"
 OUTPUT_INDEX = "index.html"
 MANIFEST_FILE = "assets/manifest.json"
-RUFFLE_CDN = "https://unpkg.com/@aspect-build/ruffle-wasm@latest/ruffle.js"
+RUFFLE_CDN = "https://cdn.jsdelivr.net/npm/ruffle-mirror@latest/ruffle.js"
 
 # Category display names (proper capitalization)
 CATEGORY_NAMES = {
@@ -107,7 +107,7 @@ def generate_game_html(swf_path, game_title):
 <body>
     <a href="../../index.html" id="back-btn">← Back to Games</a>
     <div id="game-container">
-        <embed src="../{swf_path}" type="application/x-shockwave-flash">
+        <embed src="./{swf_path}" type="application/x-shockwave-flash" width="100%" height="100%">
     </div>
     <script src="{RUFFLE_CDN}"></script>
 </body>
