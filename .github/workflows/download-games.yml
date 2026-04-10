@@ -6,7 +6,7 @@ on:
       max_games_per_category:
         description: 'Maximum games to download per category'
         required: false
-        default: '100'
+        default: '1000'
       categories:
         description: 'Categories to download (comma-separated, or "all")'
         required: false
