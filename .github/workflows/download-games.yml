@@ -6,11 +6,14 @@ on:
       max_games_per_category:
         description: 'Maximum games to download per category'
         required: false
-        default: '20'
+        default: '50'
       categories:
         description: 'Categories to download (comma-separated, or "all")'
         required: false
         default: 'all'
+  schedule:
+    # Run weekly on Sunday at 00:00 UTC
+    - cron: '0 0 * * 0'
 
 permissions:
   contents: write
