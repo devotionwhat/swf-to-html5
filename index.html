@@ -47,7 +47,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: shimmer 3s ease-in-out infinite;
-            text-shadow: none;
         }
 
         .header p {
@@ -68,91 +67,8 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            display: inline-block;
             position: relative;
             padding: 0 20px;
-        }
-
-        /* ===== GAME DISPLAY AREA ===== */
-        .game-display {
-            width: 100%;
-            height: 500px;
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            margin-bottom: 15px;
-            box-shadow: 0 10px 40px rgba(244, 147, 36, 0.15), 0 0 80px rgba(244, 147, 36, 0.05);
-            border: 1px solid rgba(244, 147, 36, 0.2);
-        }
-
-        .game-display .game-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 1.2em;
-        }
-
-        .game-display .game-placeholder i {
-            font-size: 4em;
-            margin-bottom: 20px;
-            color: rgba(244, 147, 36, 0.3);
-        }
-
-        .game-display .game-placeholder p {
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .game-display .game-title-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 15px 25px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 5;
-        }
-
-        .game-display .game-title-bar h2 {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .game-display .game-title-bar .close-btn {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #fff;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .game-display .game-title-bar .close-btn:hover {
-            background: #f49324;
-            border-color: #f49324;
-        }
-
-        .game-display iframe,
-        .game-display embed,
-        .game-display object {
-            width: 100%;
-            height: 100%;
-            border: none;
         }
 
         /* ===== MAIN SLIDER (Big Preview) ===== */
@@ -283,32 +199,24 @@
             backdrop-filter: blur(10px);
         }
 
-        .slider .left {
-            left: -20px;
-        }
-
+        .slider .left { left: -20px; }
         .slider .left:hover {
             left: 20px;
             background: #f49324;
             border-color: #f49324;
         }
-
         .slider .left.nonl {
             left: -20px;
             opacity: 0;
             visibility: hidden;
         }
 
-        .slider .right {
-            right: -20px;
-        }
-
+        .slider .right { right: -20px; }
         .slider .right:hover {
             right: 20px;
             background: #f49324;
             border-color: #f49324;
         }
-
         .slider .right.nonr {
             right: -20px;
             opacity: 0;
@@ -416,28 +324,16 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .slider-two .left-t {
-            left: -40px;
-        }
-
-        .slider-two .left-t:hover {
-            background: #f49324;
-        }
-
+        .slider-two .left-t { left: -40px; }
+        .slider-two .left-t:hover { background: #f49324; }
         .slider-two .left-t.nonl-t {
             left: -40px;
             opacity: 0;
             visibility: hidden;
         }
 
-        .slider-two .right-t {
-            right: -40px;
-        }
-
-        .slider-two .right-t:hover {
-            background: #f49324;
-        }
-
+        .slider-two .right-t { right: -40px; }
+        .slider-two .right-t:hover { background: #f49324; }
         .slider-two .right-t.nonr-t {
             right: -40px;
             opacity: 0;
@@ -465,18 +361,14 @@
             transition: opacity 1s ease;
         }
 
-        .auroral-bg .auroral.active {
-            opacity: 1;
-        }
+        .auroral-bg .auroral.active { opacity: 1; }
 
         .auroral-northern {
             animation: northern 8s linear infinite alternate;
             background: linear-gradient(10deg, rgba(10, 40, 30, 0.6) 20%, rgba(15, 50, 60, 0.4) 40%, rgba(10, 10, 26, 0.7) 70%);
         }
 
-        .auroral-northern.active {
-            opacity: 1;
-        }
+        .auroral-northern.active { opacity: 1; }
 
         @keyframes northern {
             0% { transform: translate(5%, -2%); }
@@ -486,21 +378,10 @@
             100% { transform: none; }
         }
 
-        @keyframes aura {
-            0% { transform: rotate(20deg); }
-            20% { transform: translateY(100px) rotate(1deg); }
-            40% { transform: rotate(-15deg); }
-            60% { transform: rotate(-1deg); }
-            80% { transform: translateY(-10px) rotate(16deg); }
-            100% { transform: rotate(1deg); }
-        }
-
         .auroral-stars {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 1px;
-            height: 1px;
+            top: 0; left: 0;
+            width: 1px; height: 1px;
             border-radius: 50%;
             background: white;
             z-index: -1;
@@ -530,35 +411,15 @@
 
         /* ===== RESPONSIVE ===== */
         @media screen and (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em;
-            }
-            .slider .item {
-                height: 280px;
-            }
-            .slider .item .slide-content h2 {
-                font-size: 1.4em;
-            }
-            .slider .item .slide-content {
-                bottom: 25px;
-                left: 25px;
-                right: 25px;
-            }
-            .game-display {
-                height: 350px;
-            }
-            .slider-two .item {
-                height: 70px;
-            }
+            .header h1 { font-size: 1.8em; }
+            .slider .item { height: 280px; }
+            .slider .item .slide-content h2 { font-size: 1.4em; }
+            .slider .item .slide-content { bottom: 25px; left: 25px; right: 25px; }
+            .slider-two .item { height: 70px; }
         }
 
         @media screen and (max-width: 480px) {
-            .slider .item {
-                height: 220px;
-            }
-            .game-display {
-                height: 280px;
-            }
+            .slider .item { height: 220px; }
             .slider .item .slide-content .play-btn {
                 padding: 8px 18px;
                 font-size: 0.85em;
@@ -583,21 +444,11 @@
 
     <div class="all">
 
-        <!-- Game Display Area (shows when a game is launched) -->
-        <div class="game-display" id="gameDisplay" style="display: none;">
-            <div class="game-title-bar">
-                <h2 id="gameTitle">Game Title</h2>
-                <button class="close-btn" onclick="closeGame()" title="Close game">
-                    <i class="fa fa-times"></i>
-                </button>
-            </div>
-        </div>
-
         <!-- Main Slider (Big Preview) -->
         <div class="slider">
             <div class="owl-carousel owl-theme one">
 
-                <div class="item" data-swf="assets/PacmanxAdvanced.swf" data-name="Pacman Advanced">
+                <div class="item" data-game-url="assets/PacmanxAdvanced.swf.html">
                     <div class="slide-bg" style="background-image: url('assets/PacmanxAdvanced.swf.jpg');"></div>
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
@@ -607,7 +458,7 @@
                     </div>
                 </div>
 
-                <div class="item" data-swf="assets/crash_down.swf" data-name="Crash Down">
+                <div class="item" data-game-url="assets/crash_down.swf.html">
                     <div class="slide-bg" style="background-image: url('assets/crash_down.swf.jpg');"></div>
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
@@ -617,7 +468,7 @@
                     </div>
                 </div>
 
-                <div class="item" data-swf="assets/pacman%20%281%29.swf" data-name="Pacman">
+                <div class="item" data-game-url="assets/pacman%20%281%29.swf.html">
                     <div class="slide-bg" style="background-image: url('assets/pacman%20%281%29.swf.jpg');"></div>
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
@@ -627,7 +478,7 @@
                     </div>
                 </div>
 
-                <div class="item" data-swf="assets/pacman.swf" data-name="Pacman Classic">
+                <div class="item" data-game-url="assets/pacman.swf.html">
                     <div class="slide-bg" style="background-image: url('assets/pacman.swf.jpg');"></div>
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
@@ -637,7 +488,7 @@
                     </div>
                 </div>
 
-                <div class="item" data-swf="assets/pacxon.swf" data-name="Pacxon">
+                <div class="item" data-game-url="assets/pacxon.swf.html">
                     <div class="slide-bg" style="background-image: url('assets/pacxon.swf.jpg');"></div>
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
@@ -647,7 +498,7 @@
                     </div>
                 </div>
 
-                <div class="item" data-swf="assets/super-mario-flash-2.swf" data-name="Super Mario Flash 2">
+                <div class="item" data-game-url="assets/super-mario-flash-2.swf.html">
                     <div class="slide-bg" style="background-image: url('assets/super-mario-flash-2.swf.jpg');"></div>
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
@@ -711,11 +562,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-    <!-- Ruffle Player -->
-    <script src="ruffle_web_latest/ruffle.js"></script>
-
     <script>
-        var changeSlide = 4; // mobile -1, desktop + 1
+        var changeSlide = 4;
         var slide = changeSlide;
 
         if ($(window).width() < 600) {
@@ -725,154 +573,104 @@
         }
 
         $(document).ready(function () {
-            // Main slider (big preview)
-            $('.one').owlCarousel({
+            // Main slider
+            var owl1 = $('.one');
+            owl1.owlCarousel({
                 nav: false,
                 items: 1,
                 autoplay: false,
-                center: true,
                 loop: false,
-                dots: false
+                dots: true
             });
 
             // Thumbnail slider
-            $('.two').owlCarousel({
+            var owl2 = $('.two');
+            owl2.owlCarousel({
                 nav: false,
                 margin: 15,
-                mouseDrag: false,
+                mouseDrag: true,
                 touchDrag: true,
                 loop: false,
-                dots: false,
+                dots: true,
                 responsive: {
-                    0: {
-                        items: changeSlide - 1,
-                        slideBy: changeSlide - 1
-                    },
-                    600: {
-                        items: changeSlide,
-                        slideBy: changeSlide
-                    },
-                    1000: {
-                        items: changeSlide + 1,
-                        slideBy: changeSlide + 1
-                    }
+                    0: { items: changeSlide - 1, slideBy: changeSlide - 1 },
+                    600: { items: changeSlide, slideBy: changeSlide },
+                    1000: { items: changeSlide + 1, slideBy: changeSlide + 1 }
                 }
             });
 
-            // Sync main slider with thumbnails
-            var owl = $('.one');
-            owl.owlCarousel();
-            owl.on('translated.owl.carousel', function (event) {
-                $(".right").removeClass("nonr");
-                $(".left").removeClass("nonl");
+            // When main slider changes -> sync thumbnail
+            owl1.on('changed.owl.carousel', function (event) {
+                var currentIndex = event.item.index;
+                if (currentIndex === null) return;
 
-                if ($('.one .owl-next').is(".disabled")) {
+                // Update thumbnail active state
+                $('.slider-two .item').removeClass('active');
+                $('.slider-two .item').eq(currentIndex).addClass('active');
+
+                // Move thumbnail slider to show the active item
+                var thumbItemsPerView = slide;
+                var thumbPage = Math.floor(currentIndex / thumbItemsPerView);
+                owl2.trigger('to.owl.carousel', [thumbPage * thumbItemsPerView, 300]);
+            });
+
+            // When main slider finishes transition -> update nav arrows
+            owl1.on('translated.owl.carousel', function () {
+                $(".slider .right").removeClass("nonr");
+                $(".slider .left").removeClass("nonl");
+
+                if ($('.one .owl-next').hasClass("disabled")) {
                     $(".slider .right").addClass("nonr");
                 }
-                if ($('.one .owl-prev').is(".disabled")) {
+                if ($('.one .owl-prev').hasClass("disabled")) {
                     $(".slider .left").addClass("nonl");
                 }
-
-                // Sync thumbnail active state
-                $('.slider-two .item').removeClass("active");
-                var c = $(".slider .owl-item.active").index();
-                $('.slider-two .item').eq(c).addClass("active");
-
-                // Sync thumbnail slider page
-                var d = Math.ceil((c + 1) / (slide)) - 1;
-                $(".slider-two .owl-dots .owl-dot").eq(d).trigger('click');
             });
 
-            // Main slider navigation
-            $('.right').click(function () {
-                $(".slider .owl-next").trigger('click');
+            // Main slider nav arrows
+            $('.slider .right').click(function () {
+                owl1.trigger('next.owl.carousel');
             });
-            $('.left').click(function () {
-                $(".slider .owl-prev").trigger('click');
+            $('.slider .left').click(function () {
+                owl1.trigger('prev.owl.carousel');
             });
 
-            // Click thumbnail -> go to that slide
+            // Click thumbnail -> go to that slide in main slider
             $('.slider-two .item').click(function () {
-                var b = $(".slider-two .item").index(this);
-                $(".slider .owl-dots .owl-dot").eq(b).trigger('click');
-                $(".slider-two .item").removeClass("active");
-                $(this).addClass("active");
+                var index = $(this).parent().children('.item').index(this);
+                owl1.trigger('to.owl.carousel', [index, 300]);
+                $('.slider-two .item').removeClass('active');
+                $(this).addClass('active');
             });
 
-            // Thumbnail slider navigation
-            var owl2 = $('.two');
-            owl2.owlCarousel();
-            owl2.on('translated.owl.carousel', function (event) {
-                $(".right-t").removeClass("nonr-t");
-                $(".left-t").removeClass("nonl-t");
+            // Thumbnail slider nav
+            owl2.on('translated.owl.carousel', function () {
+                $(".slider-two .right-t").removeClass("nonr-t");
+                $(".slider-two .left-t").removeClass("nonl-t");
 
-                if ($('.two .owl-next').is(".disabled")) {
+                if ($('.two .owl-next').hasClass("disabled")) {
                     $(".slider-two .right-t").addClass("nonr-t");
                 }
-                if ($('.two .owl-prev').is(".disabled")) {
+                if ($('.two .owl-prev').hasClass("disabled")) {
                     $(".slider-two .left-t").addClass("nonl-t");
                 }
             });
 
             $('.right-t').click(function () {
-                $(".slider-two .owl-next").trigger('click');
+                owl2.trigger('next.owl.carousel');
             });
             $('.left-t').click(function () {
-                $(".slider-two .owl-prev").trigger('click');
+                owl2.trigger('prev.owl.carousel');
             });
         });
 
-        // ===== GAME LAUNCHER =====
+        // ===== GAME LAUNCHER — Opens game in full screen page =====
         function launchGame(btn) {
             var slideItem = $(btn).closest('.item');
-            var swfPath = slideItem.data('swf');
-            var gameName = slideItem.data('name');
-
-            var display = document.getElementById('gameDisplay');
-            var titleEl = document.getElementById('gameTitle');
-
-            // Clear previous content
-            display.innerHTML = '';
-            display.style.display = 'block';
-
-            // Create the Ruffle player container
-            var container = document.createElement('div');
-            container.style.width = '100%';
-            container.style.height = '100%';
-            container.style.position = 'relative';
-            display.appendChild(container);
-
-            // Create Ruffle player
-            try {
-                var ruffle = window.RufflePlayer.newest();
-                var player = ruffle.createPlayer();
-                player.style.width = '100%';
-                player.style.height = '100%';
-                container.appendChild(player);
-                player.load({ url: swfPath });
-            } catch (e) {
-                // Fallback: use embed tag
-                var embed = document.createElement('embed');
-                embed.src = swfPath;
-                embed.width = '100%';
-                embed.height = '100%';
-                container.appendChild(embed);
+            var gameUrl = slideItem.data('game-url');
+            if (gameUrl) {
+                window.location.href = gameUrl;
             }
-
-            // Add title bar on top
-            var titleBar = document.createElement('div');
-            titleBar.className = 'game-title-bar';
-            titleBar.innerHTML = '<h2>' + gameName + '</h2><button class="close-btn" onclick="closeGame()" title="Close game"><i class="fa fa-times"></i></button>';
-            display.appendChild(titleBar);
-
-            // Scroll to game display
-            display.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        function closeGame() {
-            var display = document.getElementById('gameDisplay');
-            display.innerHTML = '';
-            display.style.display = 'none';
         }
     </script>
 
