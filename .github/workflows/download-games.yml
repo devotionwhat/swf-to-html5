@@ -6,14 +6,17 @@ on:
       max_games_per_category:
         description: 'Maximum games to download per category'
         required: false
-        default: '50'
+        default: '100'
       categories:
         description: 'Categories to download (comma-separated, or "all")'
         required: false
         default: 'all'
   schedule:
-    # Run weekly on Sunday at 00:00 UTC
-    - cron: '0 0 * * 0'
+    # Run daily at 00:00 UTC until we have 4GB
+    - cron: '0 0 * * *'
+  push:
+    paths:
+      - 'TRIGGER_DOWNLOAD'
 
 permissions:
   contents: write
@@ -39,7 +42,7 @@ jobs:
           
       - name: Download SWF files from Archive.org
         env:
-          MAX_PER_CATEGORY: ${{ github.event.inputs.max_games_per_category || '20' }}
+          MAX_PER_CATEGORY: ${{ github.event.inputs.max_games_per_category || '100' }}
           CATEGORIES: ${{ github.event.inputs.categories || 'all' }}
         run: |
           python3 scripts/download_games.py --max-per-category $MAX_PER_CATEGORY --categories "$CATEGORIES"
