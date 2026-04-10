@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flash Games Archive - SWF to HTML5</title>
+    <link rel="stylesheet" type="text/css" href="css/auroral2.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <style>
+        * { box-sizing: border-box; }
+        body { 
+            margin: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .auroral-info {
+            position: relative;
+            z-index: 10;
+            padding: 20px;
+        }
+        .auroral-info h1 {
+            color: white;
+            text-align: center;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 5px;
+        }
+        .auroral-info .subtitle {
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .category-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .category-nav a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        .category-section {
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        .category-header {
+            color: white;
+            font-size: 1.8em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .category-header .count {
+            font-size: 0.5em;
+            opacity: 0.7;
+        }
+        .cards-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            aspect-ratio: 3/4;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .card_image {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .card_image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card_title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 10px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        }
+        .card_title p {
+            color: white;
+            font-size: 14px;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .stats {
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            padding: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auroral-info">
+        <h1>🎮 Flash Games Archive</h1>
+        <p class="subtitle">Classic Flash Games Preserved with Ruffle Emulator</p>
+        
+        <div class="category-nav">
+            <a href="#action">Action</a>
+            <a href="#adventure">Adventure</a>
+            <a href="#arcade">Arcade</a>
+            <a href="#driving">Driving</a>
+            <a href="#puzzles">Puzzles</a>
+            <a href="#racing">Racing</a>
+            <a href="#shooting">Shooting</a>
+            <a href="#sports">Sports</a>
+            <a href="#strategy">Strategy</a>
+        </div>
+        
+        <div class="cards-list">
+        </div>
+        
+        <div class="category-section" id="action">
+            <h2 class="category-header">Action <span class="count">(17 games)</span></h2>
+            <div class="cards-list">
+            <div class="card" onclick="location.href='assets/action/Apple Shooter.swf.html';">
+                <div class="card_image">
+                    <img src="images/pEgsWN0kwbQ.jpg" alt="Apple Shooter" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Apple Shooter</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/Castlevania II Priest Battle.swf.html';">
+                <div class="card_image">
+                    <img src="images/XFWg9u0TYs4.jpg" alt="Castlevania II Priest Battle" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Castlevania II Priest Battle</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/Battle City.swf.html';">
+                <div class="card_image">
+                    <img src="images/pQDBGxtiDEo.jpg" alt="Battle City" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Battle City</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/Bombing Wario.swf.html';">
+                <div class="card_image">
+                    <img src="images/exlmv33UT90.jpg" alt="Bombing Wario" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Bombing Wario</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/Ask Wario.swf.html';">
+                <div class="card_image">
+                    <img src="images/1n6OS3HbDlk.jpg" alt="Ask Wario" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Ask Wario</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/1942 Battles In The Sky.swf.html';">
+                <div class="card_image">
+                    <img src="images/pie.gif" alt="1942 Battles In The Sky" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>1942 Battles In The Sky</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/Epic Battle Fantasy II.swf.html';">
+                <div class="card_image">
+                    <img src="images/P9wG-wdwUdc.jpg" alt="Epic Battle Fantasy II" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Epic Battle Fantasy II</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/Battle Pong.swf.html';">
+                <div class="card_image">
+                    <img src="images/P9wG-wdwUdc.jpg" alt="Battle Pong" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Battle Pong</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/Bazooka Battle.swf.html';">
+                <div class="card_image">
+                    <img src="images/DXD3o-HOh98.jpg" alt="Bazooka Battle" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Bazooka Battle</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/(Partially Working) Street Fighter Flash.swf.html';">
+                <div class="card_image">
+                    <img src="images/blue.gif" alt="(Partially Working) Street Fighter Flash" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Partially Working) Street Fighter Flash</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/(Partially Working) Assassination War.swf.html';">
+                <div class="card_image">
+                    <img src="images/pie.gif" alt="(Partially Working) Assassination War" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Partially Working) Assassination War</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/Counter Strike De Dust.swf.html';">
+                <div class="card_image">
+                    <img src="images/v5yPUQYbrcw.jpg" alt="Counter Strike De Dust" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Counter Strike De Dust</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/Alien Hominid.swf.html';">
+                <div class="card_image">
+                    <img src="images/pQDBGxtiDEo.jpg" alt="Alien Hominid" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Alien Hominid</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/1992 The Battle Of The Isles (Alt).swf.html';">
+                <div class="card_image">
+                    <img src="images/DXD3o-HOh98.jpg" alt="1992 The Battle Of The Isles (Alt)" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>1992 The Battle Of The Isles (Alt)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/1992 The Battle Of The Isles.swf.html';">
+                <div class="card_image">
+                    <img src="images/7QKoYNZNLwQ.jpg" alt="1992 The Battle Of The Isles" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>1992 The Battle Of The Isles</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/Epic Battle Fantasy.swf.html';">
+                <div class="card_image">
+                    <img src="images/blue.gif" alt="Epic Battle Fantasy" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Epic Battle Fantasy</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/action/Astrowars.swf.html';">
+                <div class="card_image">
+                    <img src="images/P9wG-wdwUdc.jpg" alt="Astrowars" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Astrowars</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section" id="adventure">
+            <h2 class="category-header">Adventure <span class="count">(6 games)</span></h2>
+            <div class="cards-list">
+            <div class="card" onclick="location.href='assets/adventure/Adventures Of A Line.swf.html';">
+                <div class="card_image">
+                    <img src="images/P43NjEoIxAg.jpg" alt="Adventures Of A Line" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Adventures Of A Line</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/adventure/Alex's Quest.swf.html';">
+                <div class="card_image">
+                    <img src="images/P43NjEoIxAg.jpg" alt="Alex's Quest" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Alex's Quest</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/adventure/Cave Escape 2.swf.html';">
+                <div class="card_image">
+                    <img src="images/P9wG-wdwUdc.jpg" alt="Cave Escape 2" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Cave Escape 2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/adventure/Big Truck Adventures 3.swf.html';">
+                <div class="card_image">
+                    <img src="images/pie.gif" alt="Big Truck Adventures 3" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Big Truck Adventures 3</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/adventure/(Partially Working) Sonic Adventure Flash.swf.html';">
+                <div class="card_image">
+                    <img src="images/7oEkesrTyUQ.jpg" alt="(Partially Working) Sonic Adventure Flash" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Partially Working) Sonic Adventure Flash</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/adventure/Big Truck Adventures 2.swf.html';">
+                <div class="card_image">
+                    <img src="images/VLdaxYyXJvw.jpg" alt="Big Truck Adventures 2" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Big Truck Adventures 2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section" id="arcade">
+            <h2 class="category-header">Arcade <span class="count">(16 games)</span></h2>
+            <div class="cards-list">
+            <div class="card" onclick="location.href='assets/arcade/Asteroids (Alt. 2).swf.html';">
+                <div class="card_image">
+                    <img src="images/n9uyCf9tjnA.jpg" alt="Asteroids (Alt. 2)" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Asteroids (Alt. 2)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/Asteroids (Alt).swf.html';">
+                <div class="card_image">
+                    <img src="images/pQDBGxtiDEo.jpg" alt="Asteroids (Alt)" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Asteroids (Alt)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/Asteroid Storm.swf.html';">
+                <div class="card_image">
+                    <img src="images/exlmv33UT90.jpg" alt="Asteroid Storm" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Asteroid Storm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/3D Frogger.swf.html';">
+                <div class="card_image">
+                    <img src="images/XFWg9u0TYs4.jpg" alt="3D Frogger" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>3D Frogger</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/Digital Ping Pong.swf.html';">
+                <div class="card_image">
+                    <img src="images/pie.gif" alt="Digital Ping Pong" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Digital Ping Pong</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/Blasteroids.swf.html';">
+                <div class="card_image">
+                    <img src="images/landscape.jpg" alt="Blasteroids" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Blasteroids</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/4 Ball Pong.swf.html';">
+                <div class="card_image">
+                    <img src="images/RKfzBQlWWhQ.jpg" alt="4 Ball Pong" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>4 Ball Pong</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/Asteroids.swf.html';">
+                <div class="card_image">
+                    <img src="images/P43NjEoIxAg.jpg" alt="Asteroids" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Asteroids</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/Breakout.swf.html';">
+                <div class="card_image">
+                    <img src="images/7QKoYNZNLwQ.jpg" alt="Breakout" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Breakout</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/Dragon Ball Z Pong.swf.html';">
+                <div class="card_image">
+                    <img src="images/T1Reil3FwME.jpg" alt="Dragon Ball Z Pong" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Dragon Ball Z Pong</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/(Partially Working) Retro Shoot.swf.html';">
+                <div class="card_image">
+                    <img src="images/n9uyCf9tjnA.jpg" alt="(Partially Working) Retro Shoot" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Partially Working) Retro Shoot</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/Classic Pong Sonic & Knuckles Version.swf.html';">
+                <div class="card_image">
+                    <img src="images/n9uyCf9tjnA.jpg" alt="Classic Pong Sonic & Knuckles Version" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Classic Pong Sonic & Knuckles Version</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/4way Pong.swf.html';">
+                <div class="card_image">
+                    <img src="images/landscape.jpg" alt="4way Pong" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>4way Pong</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/Asteroids (2).swf.html';">
+                <div class="card_image">
+                    <img src="images/pyramid.jpg" alt="Asteroids (2)" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Asteroids (2)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/Asteroids (4).swf.html';">
+                <div class="card_image">
+                    <img src="images/XFWg9u0TYs4.jpg" alt="Asteroids (4)" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Asteroids (4)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/arcade/Asteroids (3).swf.html';">
+                <div class="card_image">
+                    <img src="images/wL6FgkncWDs.jpg" alt="Asteroids (3)" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Asteroids (3)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section" id="driving">
+            <h2 class="category-header">Driving <span class="count">(16 games)</span></h2>
+            <div class="cards-list">
+            <div class="card" onclick="location.href='assets/driving/(Partially Working) Funky Truck Arizona.swf.html';">
+                <div class="card_image">
+                    <img src="images/O6xM4GBsxGI.jpg" alt="(Partially Working) Funky Truck Arizona" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Partially Working) Funky Truck Arizona</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/Bush Aerobics.swf.html';">
+                <div class="card_image">
+                    <img src="images/pQDBGxtiDEo.jpg" alt="Bush Aerobics" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Bush Aerobics</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/(Partially Working) Funky Truck.swf.html';">
+                <div class="card_image">
+                    <img src="images/VLdaxYyXJvw.jpg" alt="(Partially Working) Funky Truck" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Partially Working) Funky Truck</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/Batman Truck.swf.html';">
+                <div class="card_image">
+                    <img src="images/VLdaxYyXJvw.jpg" alt="Batman Truck" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Batman Truck</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/(Not Working) Monster Trucks.swf.html';">
+                <div class="card_image">
+                    <img src="images/exlmv33UT90.jpg" alt="(Not Working) Monster Trucks" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Not Working) Monster Trucks</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/Busman Parking 3D.swf.html';">
+                <div class="card_image">
+                    <img src="images/blue.gif" alt="Busman Parking 3D" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Busman Parking 3D</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/3D Rally Racing.swf.html';">
+                <div class="card_image">
+                    <img src="images/exlmv33UT90.jpg" alt="3D Rally Racing" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>3D Rally Racing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/Bush Rampage.swf.html';">
+                <div class="card_image">
+                    <img src="images/pie.gif" alt="Bush Rampage" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Bush Rampage</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/(BO) Twin Drivers Level 9000.swf.html';">
+                <div class="card_image">
+                    <img src="images/wL6FgkncWDs.jpg" alt="(BO) Twin Drivers Level 9000" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(BO) Twin Drivers Level 9000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/Busy Burger.swf.html';">
+                <div class="card_image">
+                    <img src="images/T1Reil3FwME.jpg" alt="Busy Burger" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Busy Burger</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/3D Car Racing.swf.html';">
+                <div class="card_image">
+                    <img src="images/landscape.jpg" alt="3D Car Racing" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>3D Car Racing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/ASmallCar.swf.html';">
+                <div class="card_image">
+                    <img src="images/P9wG-wdwUdc.jpg" alt="ASmallCar" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>ASmallCar</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/3D Truck Mision.swf.html';">
+                <div class="card_image">
+                    <img src="images/P9wG-wdwUdc.jpg" alt="3D Truck Mision" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>3D Truck Mision</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/Action Driving Game.swf.html';">
+                <div class="card_image">
+                    <img src="images/pie.gif" alt="Action Driving Game" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Action Driving Game</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/(Sound Broken) T-Wrecks Gut Buster.swf.html';">
+                <div class="card_image">
+                    <img src="images/pEgsWN0kwbQ.jpg" alt="(Sound Broken) T-Wrecks Gut Buster" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Sound Broken) T-Wrecks Gut Buster</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/driving/(Intro Only) Garfield's Scary Scavenger Hunt.swf.html';">
+                <div class="card_image">
+                    <img src="images/wL6FgkncWDs.jpg" alt="(Intro Only) Garfield's Scary Scavenger Hunt" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Intro Only) Garfield's Scary Scavenger Hunt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section" id="puzzles">
+            <h2 class="category-header">Puzzles <span class="count">(1 games)</span></h2>
+            <div class="cards-list">
+            <div class="card" onclick="location.href='assets/puzzles/Tetris (2).swf.html';">
+                <div class="card_image">
+                    <img src="images/l5Tzv1alcps.jpg" alt="Tetris (2)" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Tetris (2)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section" id="racing">
+            <h2 class="category-header">Racing <span class="count">(14 games)</span></h2>
+            <div class="cards-list">
+            <div class="card" onclick="location.href='assets/racing/3D Motorbike Racer.swf.html';">
+                <div class="card_image">
+                    <img src="images/l5Tzv1alcps.jpg" alt="3D Motorbike Racer" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>3D Motorbike Racer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/Cursor Race.swf.html';">
+                <div class="card_image">
+                    <img src="images/pie.gif" alt="Cursor Race" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Cursor Race</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/American Racing.swf.html';">
+                <div class="card_image">
+                    <img src="images/RKfzBQlWWhQ.jpg" alt="American Racing" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>American Racing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/(Partially Working) Cyber Race.swf.html';">
+                <div class="card_image">
+                    <img src="images/O6xM4GBsxGI.jpg" alt="(Partially Working) Cyber Race" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Partially Working) Cyber Race</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/Formula Racer.swf.html';">
+                <div class="card_image">
+                    <img src="images/qjCHPZbeXCQ.jpg" alt="Formula Racer" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Formula Racer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/3D Jetski Racing.swf.html';">
+                <div class="card_image">
+                    <img src="images/wL6FgkncWDs.jpg" alt="3D Jetski Racing" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>3D Jetski Racing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/Acceleracers Track Mod.swf.html';">
+                <div class="card_image">
+                    <img src="images/VLdaxYyXJvw.jpg" alt="Acceleracers Track Mod" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Acceleracers Track Mod</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/American Racing 2.swf.html';">
+                <div class="card_image">
+                    <img src="images/DXD3o-HOh98.jpg" alt="American Racing 2" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>American Racing 2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/(Partially Working) Hot Wheels Pit Race Off.swf.html';">
+                <div class="card_image">
+                    <img src="images/XFWg9u0TYs4.jpg" alt="(Partially Working) Hot Wheels Pit Race Off" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Partially Working) Hot Wheels Pit Race Off</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/(Partially Working) Ferrari XV Speed Trial.swf.html';">
+                <div class="card_image">
+                    <img src="images/qjCHPZbeXCQ.jpg" alt="(Partially Working) Ferrari XV Speed Trial" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Partially Working) Ferrari XV Speed Trial</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/3D Rally Racing.swf.html';">
+                <div class="card_image">
+                    <img src="images/1n6OS3HbDlk.jpg" alt="3D Rally Racing" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>3D Rally Racing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/(Partially Working) Hot Wheels Racing.swf.html';">
+                <div class="card_image">
+                    <img src="images/pQDBGxtiDEo.jpg" alt="(Partially Working) Hot Wheels Racing" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Partially Working) Hot Wheels Racing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/(Music Missing) Formula Fuelers Racers.swf.html';">
+                <div class="card_image">
+                    <img src="images/oSM6a3kSSeA.jpg" alt="(Music Missing) Formula Fuelers Racers" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>(Music Missing) Formula Fuelers Racers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/racing/3D Powerboat Race.swf.html';">
+                <div class="card_image">
+                    <img src="images/DXD3o-HOh98.jpg" alt="3D Powerboat Race" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>3D Powerboat Race</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section" id="shooting">
+            <h2 class="category-header">Shooting <span class="count">(1 games)</span></h2>
+            <div class="cards-list">
+            <div class="card" onclick="location.href='assets/shooting/Alien Hominid.swf.html';">
+                <div class="card_image">
+                    <img src="images/v5yPUQYbrcw.jpg" alt="Alien Hominid" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Alien Hominid</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section" id="sports">
+            <h2 class="category-header">Sports <span class="count">(2 games)</span></h2>
+            <div class="cards-list">
+            <div class="card" onclick="location.href='assets/sports/Billiards.swf.html';">
+                <div class="card_image">
+                    <img src="images/n9uyCf9tjnA.jpg" alt="Billiards" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Billiards</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="location.href='assets/sports/Bowling (Big Fish Games).swf.html';">
+                <div class="card_image">
+                    <img src="images/P9wG-wdwUdc.jpg" alt="Bowling (Big Fish Games)" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Bowling (Big Fish Games)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section" id="strategy">
+            <h2 class="category-header">Strategy <span class="count">(1 games)</span></h2>
+            <div class="cards-list">
+            <div class="card" onclick="location.href='assets/strategy/Build Your Coaster.swf.html';">
+                <div class="card_image">
+                    <img src="images/DXD3o-HOh98.jpg" alt="Build Your Coaster" onerror="this.src='images/landscape.jpg'">
+                    <div class="card_title">
+                        <p>Build Your Coaster</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <p>Total Games: 74 | Powered by Ruffle Flash Emulator</p>
+        </div>
+    </div>
+    
+    <!-- Background Effects -->
+    <div class="container">
+        <div id="northern" class="auroral auroral-northern"></div>
+        <div id="northern-intense" class="auroral auroral-northern-intense"></div>
+        <div id="northern-dimmed" class="auroral auroral-northern-dimmed"></div>
+        <div class="auroral-stars"></div>
+    </div>
+</body>
+</html>
