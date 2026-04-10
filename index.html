@@ -454,7 +454,7 @@
                     <div class="slide-content">
                         <h2>Pacman Advanced</h2>
                         <p>The classic Pac-Man game with advanced features and levels.</p>
-                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                        <button class="play-btn" ><i class="fa fa-play"></i> Play Now</button>
                     </div>
                 </div>
 
@@ -464,7 +464,7 @@
                     <div class="slide-content">
                         <h2>Crash Down</h2>
                         <p>A fast-paced puzzle game. Match and eliminate blocks before they stack up!</p>
-                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                        <button class="play-btn" ><i class="fa fa-play"></i> Play Now</button>
                     </div>
                 </div>
 
@@ -474,7 +474,7 @@
                     <div class="slide-content">
                         <h2>Pacman</h2>
                         <p>The original Pac-Man arcade experience in your browser.</p>
-                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                        <button class="play-btn" ><i class="fa fa-play"></i> Play Now</button>
                     </div>
                 </div>
 
@@ -484,7 +484,7 @@
                     <div class="slide-content">
                         <h2>Pacman Classic</h2>
                         <p>Enjoy the timeless classic Pac-Man right here.</p>
-                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                        <button class="play-btn" ><i class="fa fa-play"></i> Play Now</button>
                     </div>
                 </div>
 
@@ -494,7 +494,7 @@
                     <div class="slide-content">
                         <h2>Pacxon</h2>
                         <p>A clever mix of Pac-Man and Qix - claim territory while avoiding ghosts!</p>
-                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                        <button class="play-btn" ><i class="fa fa-play"></i> Play Now</button>
                     </div>
                 </div>
 
@@ -504,7 +504,7 @@
                     <div class="slide-content">
                         <h2>Super Mario Flash 2</h2>
                         <p>Create and play custom Mario levels in this Flash classic!</p>
-                        <button class="play-btn" onclick="launchGame(this)"><i class="fa fa-play"></i> Play Now</button>
+                        <button class="play-btn" ><i class="fa fa-play"></i> Play Now</button>
                     </div>
                 </div>
 
@@ -636,8 +636,10 @@
             });
 
             // Click thumbnail -> go to that slide in main slider
-            $('.slider-two .item').click(function () {
-                var index = $(this).parent().children('.item').index(this);
+            // FIX: Must search within the entire .two carousel, not just parent (.owl-item)
+            // because Owl Carousel wraps each .item in a .owl-item div
+            $('.slider-two').on('click', '.item', function () {
+                var index = $('.slider-two .item').index(this);
                 owl1.trigger('to.owl.carousel', [index, 300]);
                 $('.slider-two .item').removeClass('active');
                 $(this).addClass('active');
@@ -665,13 +667,27 @@
         });
 
         // ===== GAME LAUNCHER — Opens game in full screen page =====
-        function launchGame(btn) {
-            var slideItem = $(btn).closest('.item');
+        // FIX: Owl Carousel intercepts clicks on .item, so we use event delegation
+        // on the document level and stop propagation to prevent Owl from eating it
+        $(document).on('click', '.play-btn', function(e) {
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            var slideItem = $(this).closest('.item');
             var gameUrl = slideItem.data('game-url');
             if (gameUrl) {
                 window.location.href = gameUrl;
             }
-        }
+        });
+
+        // Also handle clicking the entire main slider item (not just the button)
+        $(document).on('click', '.slider .item', function(e) {
+            // Only if the click wasn't on the play button (already handled above)
+            if ($(e.target).closest('.play-btn').length) return;
+            var gameUrl = $(this).data('game-url');
+            if (gameUrl) {
+                window.location.href = gameUrl;
+            }
+        });
     </script>
 
 </body>
