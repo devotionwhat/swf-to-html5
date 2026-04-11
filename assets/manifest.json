@@ -1,6 +1,6 @@
 {
   "games": [],
-  "total_size": 2426838406,
+  "total_size": 2455931367,
   "categories": {
     "action": {
       "count": 54,
@@ -55,8 +55,8 @@
       "size": 7243871
     },
     "other": {
-      "count": 591,
-      "size": 1525427063
+      "count": 600,
+      "size": 1554520024
     },
     "puzzles": {
       "count": 8,
