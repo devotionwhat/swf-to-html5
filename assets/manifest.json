@@ -1,58 +1,86 @@
 {
   "games": [],
-  "total_size": 405391746,
+  "total_size": 2455931367,
   "categories": {
     "action": {
-      "count": 7,
-      "size": 45011436
+      "count": 54,
+      "size": 173663778
     },
     "adventure": {
-      "count": 5,
-      "size": 41268880
+      "count": 26,
+      "size": 89493776
     },
     "arcade": {
-      "count": 2,
-      "size": 85022
+      "count": 48,
+      "size": 53161140
     },
     "board-game": {
+      "count": 6,
+      "size": 10830773
+    },
+    "casino": {
       "count": 1,
-      "size": 136173
+      "size": 863210
     },
     "defense": {
-      "count": 5,
-      "size": 16152831
+      "count": 11,
+      "size": 21362174
+    },
+    "dress-up": {
+      "count": 4,
+      "size": 2030516
     },
     "driving": {
-      "count": 6,
-      "size": 17189398
+      "count": 97,
+      "size": 229502854
     },
     "education": {
-      "count": 7,
-      "size": 41388180
+      "count": 8,
+      "size": 42039924
+    },
+    "fighting": {
+      "count": 4,
+      "size": 6511436
     },
     "girls": {
       "count": 0,
       "size": 0
     },
+    "make-up": {
+      "count": 13,
+      "size": 10770536
+    },
+    "matching": {
+      "count": 13,
+      "size": 7243871
+    },
     "other": {
-      "count": 61,
-      "size": 230685689
+      "count": 600,
+      "size": 1554520024
     },
     "puzzles": {
-      "count": 1,
-      "size": 14461
+      "count": 8,
+      "size": 7486594
+    },
+    "racing": {
+      "count": 66,
+      "size": 199532852
     },
     "rpg": {
-      "count": 1,
-      "size": 1233598
+      "count": 2,
+      "size": 2690466
     },
     "shooting": {
-      "count": 1,
-      "size": 61710
+      "count": 9,
+      "size": 11470103
+    },
+    "sports": {
+      "count": 14,
+      "size": 13391570
     },
     "strategy": {
-      "count": 1,
-      "size": 12164368
+      "count": 9,
+      "size": 19365770
     }
   }
 }
